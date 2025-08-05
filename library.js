@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(author, title, numPages, read) {
   this.id = crypto.randomUUID();
@@ -17,6 +17,7 @@ function addBookToLibrary(author, title, numPages, read) {
 function deleteBook(id) {
   const bookToDelete = document.getElementById(id);
   bookToDelete.remove();
+  myLibrary = myLibrary.filter((book) => book.id !== id);
 }
 
 function addBook(book) {
