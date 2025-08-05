@@ -1,11 +1,14 @@
 
 body {
   background-color: rgba(183, 205, 230, 0.712);
+}
+
+.book-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-div {
+.book-grid div {
   align-self: center;
   justify-self: center;
   display: flex;

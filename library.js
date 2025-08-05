@@ -14,6 +14,7 @@ function addBooktoLibrary(author, title, numPages, read) {
 }
 
 function displayBooks() {
+  const bookGrid = document.body.querySelector(".book-grid");
   myLibrary.map((book) => {
     console.log("book");
     const bookContainer = document.createElement("div");
@@ -29,7 +30,7 @@ function displayBooks() {
     const readDisplay = document.createElement("p");
     readDisplay.textContent = book.read ? "Has been read" : "Has not been read";
     bookContainer.appendChild(readDisplay);
-    document.body.appendChild(bookContainer);
+    bookGrid.appendChild(bookContainer);
 
   })
 }
