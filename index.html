@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles.css">
   <script src="./library.js" defer></script>
-  <title>Document</title>
+  <title>Library</title>
 </head>
 <body>
-  <div class="book-grid"></div>
+  <div class="container">
+    <div class="book-grid"></div>
+    <button class="new-book">New Book</button>
+  </div>
+  <dialog>
+    <button class="close" autofocus>Close</button>
+    <form class="book-form">
+      <h3>Add New Book</h3>
+      <div class="input-container">
+        <label for="title">Title</label>
+        <input id="title" type="text" />
+      </div>
+      <div class="input-container">
+        <label for="author">Author</label>
+        <input id="author" type="text" />
+      </div>
+      <div class="input-container">
+        <label for="pages">Number of Pages</label>
+        <input id="pages" type="text" />
+      </div>
+      <div>
+        <label for="read">Have you read it?</label>
+        <input type="checkbox" id="read">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </dialog>
 </body>
 </html>
