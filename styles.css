@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 248, 237);
   min-width: 400px;
   border-radius: 8px;
   margin: 50px;
@@ -52,7 +52,6 @@ dialog {
   min-height: 400px;
   min-width: 500px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.274);
-  background-color: rgb(253, 243, 229);
 }
 
 .book-form {

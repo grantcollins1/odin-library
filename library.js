@@ -14,9 +14,19 @@ function addBookToLibrary(author, title, numPages, read) {
   addBook(book);
 }
 
+function deleteBook(id) {
+  const bookToDelete = document.getElementById(id);
+  bookToDelete.remove();
+}
+
 function addBook(book) {
   const bookGrid = document.body.querySelector(".book-grid");
   const bookContainer = document.createElement("div");
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => deleteBook(book.id));
+  bookContainer.appendChild(deleteButton);
+  bookContainer.setAttribute("id", book.id);
   const titleDisplay = document.createElement("p");
   titleDisplay.textContent = "Title: " + book.title;
   bookContainer.appendChild(titleDisplay);
