@@ -13,11 +13,8 @@ function addBooktoLibrary(author, title, numPages, read) {
   myLibrary.push(book);
 }
 
-function displayBooks() {
-  const bookGrid = document.body.querySelector(".book-grid");
-  myLibrary.map((book) => {
-    console.log("book");
-    const bookContainer = document.createElement("div");
+function addBook(bookGrid, book) {
+  const bookContainer = document.createElement("div");
     const titleDisplay = document.createElement("p");
     titleDisplay.textContent = "Title: " + book.title;
     bookContainer.appendChild(titleDisplay);
@@ -31,7 +28,21 @@ function displayBooks() {
     readDisplay.textContent = book.read ? "Has been read" : "Has not been read";
     bookContainer.appendChild(readDisplay);
     bookGrid.appendChild(bookContainer);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const title = formData.get('title');
+  const author = formData.get('author');
+  const numPages = formData.get('pages');
+  const read = (formData.get('read') === 'on');
+  addBooktoLibrary(author, title, pages, read);
+}
 
+function displayBooks() {
+  const bookGrid = document.body.querySelector(".book-grid");
+  myLibrary.map((book) => {
+    addBook(bookGrid, book);
   })
 }
 addBooktoLibrary("Grant", "To Kill a Mockingbird", 357, false);
@@ -41,6 +52,8 @@ displayBooks();
 
 const addBookButton = document.body.querySelector(".new-book");
 const dialog = document.body.querySelector("dialog");
-const closeModalButton = document.body.querySelector("dialog .close")
+const closeModalButton = document.body.querySelector("dialog .close");
+const bookForm = document.body.querySelector("dialog form");
+bookForm.addEventListener("submit", (event) => handleSubmit(event));
 addBookButton.addEventListener("click", () => dialog.showModal());
 closeModalButton.addEventListener("click", () => dialog.close());
