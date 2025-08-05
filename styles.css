@@ -42,10 +42,6 @@ body {
   font-size: 16px;
 }
 
-button:hover {
-  background-color: #3f6284;
-}
-
 dialog {
   border: 0;
   border-radius: 5px;
@@ -85,10 +81,11 @@ dialog button {
   height: 30px;
 }
 
-.close {
-  background-color: #e48479;
+
+button:hover {
+  filter: brightness(90%);
 }
 
-.close:hover {
-  background-color: #c96b61;
+.close, .book-grid div button {
+  background-color: #e48479;
 }
