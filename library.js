@@ -31,7 +31,7 @@ function addBook(book) {
   bookContainer.appendChild(readDisplay);
   bookGrid.appendChild(bookContainer);
 }
-function handleSubmit(event) {
+function handleSubmit(event, bookForm, dialog) {
   event.preventDefault();
   const formData = new FormData(event.target);
   const title = formData.get('title');
@@ -39,12 +39,10 @@ function handleSubmit(event) {
   const numPages = formData.get('pages');
   const read = (formData.get('read') === 'on');
   addBookToLibrary(title, author, numPages, read);
+  bookForm.reset();
+  dialog.close();
 }
 
-function displayBooks() {  myLibrary.map((book) => {
-    addBook(book);
-  })
-}
 addBookToLibrary("Grant", "To Kill a Mockingbird", 357, false);
 addBookToLibrary("Jason", "Cookbook", 10, true);
 addBookToLibrary("Ben", "Recipes", 150, true);
@@ -53,6 +51,6 @@ const addBookButton = document.body.querySelector(".new-book");
 const dialog = document.body.querySelector("dialog");
 const closeModalButton = document.body.querySelector("dialog .close");
 const bookForm = document.body.querySelector("dialog form");
-bookForm.addEventListener("submit", (event) => handleSubmit(event));
+bookForm.addEventListener("submit", (event) => handleSubmit(event, bookForm, dialog));
 addBookButton.addEventListener("click", () => dialog.showModal());
 closeModalButton.addEventListener("click", () => dialog.close());
