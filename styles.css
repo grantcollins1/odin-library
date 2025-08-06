@@ -93,3 +93,7 @@ button:hover {
 .read {
   background-color: rgb(119, 146, 126);
 }
+
+.book-grid div button {
+  padding: 5px;
+}
