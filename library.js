@@ -8,6 +8,13 @@ function Book(author, title, numPages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function() {
+  const bookToUpdate = document.getElementById(this.id);
+  this.read = !this.read;
+  const readDisplay = bookToUpdate.querySelector('.read-display');
+  readDisplay.textContent = this.read ? "Has been read" : "Has not been read";
+}
+
 function addBookToLibrary(author, title, numPages, read) {
   const book = new Book(author, title, numPages, read);
   myLibrary.push(book);
@@ -24,6 +31,7 @@ function addBook(book) {
   const bookGrid = document.body.querySelector(".book-grid");
   const bookContainer = document.createElement("div");
   const deleteButton = document.createElement("button");
+  deleteButton.classList.add('delete');
   deleteButton.textContent = "Delete";
   deleteButton.addEventListener("click", () => deleteBook(book.id));
   bookContainer.appendChild(deleteButton);
@@ -38,8 +46,14 @@ function addBook(book) {
   pageNumDisplay.textContent = "Number of Pages: " + book.numPages;
   bookContainer.appendChild(pageNumDisplay);
   const readDisplay = document.createElement("p");
+  readDisplay.classList.add('read-display');
   readDisplay.textContent = book.read ? "Has been read" : "Has not been read";
   bookContainer.appendChild(readDisplay);
+  const readButton = document.createElement("button");
+  readButton.textContent = "Toggle Read";
+  readButton.classList.add('read');
+  readButton.addEventListener("click", () => book.toggleRead());
+  bookContainer.appendChild(readButton);
   bookGrid.appendChild(bookContainer);
 }
 function handleSubmit(event, bookForm, dialog) {
